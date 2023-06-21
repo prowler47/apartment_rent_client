@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add store</title>
+    <link rel="stylesheet" type="text/css" href="/styles.css">
+</head>
+<body>
+<div class="container">
+    <h3>Add new store</h3>
+    <br>
+<!--/*@thymesVar id="newStore" type="java"*/-->
+<!--/*@thymesVar id="apartment" type="java"*/-->
+<form th:object="${newStore}" th:action="@{/info/add/addStore/{apartmentId}(apartmentId=${apartment.getId()})}" method="post">
+    <input type="hidden" th:field="*{id}"/>
+    <div class="internal-container-apartment">
+    <div>
+        <label for="name">Name:</label>
+        <input class="add-apartment" type="text" id="name" th:field="${newStore.name}" />
+    </div>
+    <br>
+    <div>
+        <label for="time">Time:</label>
+        <input class="add-apartment" type="text" id="time" th:field="${newStore.time}" />
+    </div>
+    </div>
+    <br>
+    <button type="submit">Add</button>
+</form>
+<a th:href="@{/apartments/{id}(id=${apartment.getId()})}">Return</a>
+</div>
+</body>
+</html>

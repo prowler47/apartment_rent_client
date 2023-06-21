@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit apartment</title>
+    <link rel="stylesheet" type="text/css" href="/styles.css">
+</head>
+<body>
+<div class="container">
+    <h3>Edit apartment</h3>
+    <br>
+<!--/*@thymesVar id="apartmentToUpdate" type="java"*/-->
+<!--/*@thymesVar id="apartmentForUpdate" type="java"*/-->
+<form id="myForm" th:object="${apartmentForUpdate}" th:action="@{/apartments/update/{id}(id=${apartmentToUpdate.getId()})}" method="post">
+    <div class="internal-container-apartment">
+    <input type="hidden" name="_method" value="put" />
+    <input type="hidden" th:field="*{id}" />
+    <div>
+        <label for="address">Address:</label>
+        <input class="add-apartment" type="text" id="address" th:field="${apartmentForUpdate.address}" />
+    </div>
+    <br/>
+    <div><label for="price">Price:</label>
+        <input class="add-apartment" type="text" id="price" th:field="${apartmentForUpdate.price}" />
+    </div>
+    <br/>
+    <div><label for="city">City:</label>
+        <input class="add-apartment" type="text" id="city" th:field="${apartmentForUpdate.city}" />
+    </div>
+    </div>
+    <button type="submit" >Update</button>
+</form>
+</div>
+</body>
+</html>

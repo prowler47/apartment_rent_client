@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>All stores</title>
+    <link rel="stylesheet" type="text/css" href="/styles.css">
+</head>
+<body>
+<div class="container">
+<!--/*@thymesVar id="storesList" type="java"*/-->
+<table th:each="item : ${storesList}">
+    <tr>
+        <td>Name:</td>
+        <td th:text="${item.getName()}">Name</td>
+    </tr>
+    <tr>
+        <td>Time:</td>
+        <td th:text="${item.getTime()}">Time</td>
+    </tr>
+    <tr>
+        <td>
+            <!--/*@thymesVar id="apartment" type="java"*/-->
+            <a th:href="@{/info/update/editStore/{apartmentId}/{infoId}(apartmentId=${apartment.getId()}, infoId=${item.getId()})}">Update</a>
+        </td>
+        <td>
+            <a th:href="@{/info/delete/store/{apartmentId}/{storeId}(apartmentId=${apartment.getId()}, storeId=${item.getId()})}">Delete</a>
+        </td>
+    </tr>
+</table>
+<!--/*@thymesVar id="apartment" type="java"*/-->
+<a class="return" th:href="@{/apartments/{id}(id=${apartment.getId()})}">Return</a>
+</div>
+</body>
+</html>

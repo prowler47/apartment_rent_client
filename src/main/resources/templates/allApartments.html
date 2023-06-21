@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>All apartments</title>
+    <link rel="stylesheet" type="text/css" href="/styles.css">
+</head>
+<body>
+<div class="container">
+    <h3>List of apartments</h3>
+<table class="table">
+    <!--/*@thymesVar id="apartmentsList" type="java"*/-->
+    <tr th:each="item : ${apartmentsList}">
+        <td th:text="${item.getAddress()}">Address</td>
+        <td><a th:href="@{/apartments/{id}(id=${item.getId()})}">More info</a></td>
+        <td><a th:href="@{/apartments/edit/{apartmentId}(apartmentId=${item.getId()})}">Update</a></td>
+        <td><a th:href="@{/apartments/delete/{apartmentId}(apartmentId=${item.getId()})}">Delete</a></td>
+    </tr>
+</table>
+
+<form th:action="@{/apartments/search}" method="GET">
+    <input class="input-search" type="text" name="keyword" placeholder="Enter address">
+    <input type="checkbox" name="checkBox">
+    <button type="submit">Search</button>
+</form>
+<p><a href="/apartments/new">Add new apartment</a></p>
+</div>
+</body>
+</html>

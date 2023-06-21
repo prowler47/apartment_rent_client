@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>All apartments by contains address</title>
+    <link rel="stylesheet" type="text/css" href="/styles.css">
+</head>
+<body>
+<div class="container">
+<table>
+    <tr>
+        <th>Address</th>
+        <th>More</th>
+    </tr>
+    <!--/*@thymesVar id="result" type="java"*/-->
+    <tr th:each="item : ${result}">
+        <td th:text="${item.getAddress()}">Address</td>
+        <td><a th:href="@{/apartments/{id}(id=${item.getId()})}">More info</a></td>
+    </tr>
+</table>
+    <a class="home" href="/apartments/viewAll">Home</a>
+</div>
+</body>
+</html>

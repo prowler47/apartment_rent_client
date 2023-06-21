@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Apartment</title>
+    <link rel="stylesheet" type="text/css" href="/styles.css">
+</head>
+<body>
+<div class="container">
+    <h3>Apartment info:</h3>
+<!--/*@thymesVar id="apartment" type="java"*/-->
+<table th:object="${apartment}">
+    <tr>
+        <td>Address:</td>
+        <td th:text="${apartment.getAddress()}">Address</td>
+    </tr>
+    <tr>
+        <td>Price:</td>
+        <td th:text="${apartment.getPrice()}">Price</td>
+    </tr>
+    <tr>
+        <td>City:</td>
+        <td th:text="${apartment.getCity()}">City</td>
+    </tr>
+</table>
+    <br>
+<table th:object="${apartment}">
+    <tr>
+        <td><a th:href="@{/info/get/educList/{id}(id=${apartment.getId()})}">Education establishments</a></td>
+        <td><a th:href="@{/info/get/parkingList/{id}(id=${apartment.getId()})}">Parking</a></td>
+        <td><a th:href="@{/info/get/hospitalsList/{id}(id=${apartment.getId()})}">Hospitals</a></td>
+        <td><a th:href="@{/info/get/roadJunctionsList/{id}(id=${apartment.getId()})}">Road junction</a></td>
+        <td><a th:href="@{/info/get/storesList/{id}(id=${apartment.getId()})}">Stores</a></td>
+    </tr>
+</table>
+    <br>
+    <table th:object="${apartment}">
+        <tr>
+            <td><a th:href="@{/info/add/newEduc/{id}(id=${apartment.getId()})}">Add educ</a></td>
+            <td><a th:href="@{/info/add/newHospital/{id}(id=${apartment.getId()})}">Add hospital</a></td>
+            <td><a th:href="@{/info/add/newParking/{id}(id=${apartment.getId()})}">Add parking</a></td>
+            <td><a th:href="@{/info/add/newRoadJunction/{id}(id=${apartment.getId()})}">Add roadJunction</a></td>
+            <td><a th:href="@{/info/add/newStore/{id}(id=${apartment.getId()})}">Add store</a></td>
+        </tr>
+    </table>
+    <a class="home" href="/apartments/viewAll">Home</a>
+</div>
+</body>
+</html>

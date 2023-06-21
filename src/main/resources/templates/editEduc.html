@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit educatiom establishment</title>
+</head>
+<body>
+<!--/*@thymesVar id="educForUpdate" type="java"*/-->
+<!--/*@thymesVar id="apartment" type="java"*/-->
+<!--/*@thymesVar id="educToUpdate" type="java"*/-->
+<form th:object="${educForUpdate}" th:action="@{/info/update/updateEduc/{apartmentId}/{infoId}(apartmentId=${apartment.getId()}, infoId=${educToUpdate.getId()})}" method="post">
+    <input type="hidden" name="_method" value="put" />
+    <input type="hidden" th:field="*{id}" />
+    <div>
+        <label for="name">Name:</label>
+        <input type="text" id="name" th:field="${educForUpdate.name}" />
+    </div>
+    <br/>
+    <div><label for="time">Time:</label>
+        <input type="text" id="time" th:field="${educForUpdate.time}" />
+    </div>
+    <br/>
+    <button type="submit" >Update</button>
+</form>
+</body>
+</html>

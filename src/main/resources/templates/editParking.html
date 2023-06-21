@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit parking</title>
+</head>
+<body>
+<!--/*@thymesVar id="parkingForUpdate" type="java"*/-->
+<!--/*@thymesVar id="apartment" type="java"*/-->
+<!--/*@thymesVar id="parkingToUpdate" type="java"*/-->
+<form th:object="${parkingForUpdate}" th:action="@{/info/update/updateParking/{apartmentId}/{infoId}(apartmentId=${apartment.getId()}, infoId=${parkingToUpdate.getId()})}" method="post">
+    <input type="hidden" name="_method" value="put" />
+    <input type="hidden" th:field="*{id}" />
+    <div>
+        <label for="name">Name:</label>
+        <input type="text" id="name" th:field="${parkingForUpdate.name}" />
+    </div>
+    <br/>
+    <div><label for="time">Time:</label>
+        <input type="text" id="time" th:field="${parkingForUpdate.time}" />
+    </div>
+    <br/>
+    <button type="submit" >Update</button>
+</form>
+</body>
+</html>

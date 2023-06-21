@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add apartment</title>
+    <link rel="stylesheet" type="text/css" href="/styles.css">
+</head>
+<body>
+<div class="container">
+    <h3>Add new apartment:</h3>
+    <br>
+<!--/*@thymesVar id="newApartment" type="java"*/-->
+<form th:object="${newApartment}" th:action="@{/apartments/add}" method="post">
+    <input type="hidden" th:field="*{id}" />
+    <div class="internal-container-apartment">
+    <div>
+        <label for="address">Address:</label>
+        <input class="add-apartment" type="text" id="address" th:field="${newApartment.address}" />
+    </div>
+    <div>
+        <label for="surname">price:</label>
+        <input class="add-apartment" type="text" id="surname" th:field="${newApartment.price}" />
+    </div>
+    <div>
+        <label for="city">city:</label>
+        <input class="add-apartment" type="text" id="city" th:field="${newApartment.city}" />
+    </div>
+    <div>
+        <label for="petFriendly">Pet Friendly:</label>
+        <input class="add-apartment" type="checkbox" id="petFriendly" name="petFriendly" value="true" />
+    </div>
+    </div>
+    <br>
+    <button class="internal-container-apartment-add" type="submit">Add</button>
+</form>
+    <a class="internal-container-apartment-home" href="/apartments/viewAll">Home</a>
+</div>
+</body>
+</html>
